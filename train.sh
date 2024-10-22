@@ -1,5 +1,4 @@
 area_resize_ratio=(0.01 0.005 0.01)
-smooth_r=(1. 1. 1e5)
 for split_ in 0 1 2
 do
   python3.8 main.py --init_method "tcp://localhost:9999" --device "0, 1, 2, 3, 4, 5, 7" \
@@ -10,6 +9,6 @@ do
   TRAIN.save_model False \
   DATASET.area_resize_ratio ${area_resize_ratio[$split_]} \
   DATASET.normal_sample_sampling_prob 0.3 \
-  TRAIN.SOFS.smooth_r ${smooth_r[$split_]} \
+  TRAIN.SOFS.smooth_r 1e5 \
   DATASET.name 'VISION_V1_ND' RNG_SEED 54
 done
